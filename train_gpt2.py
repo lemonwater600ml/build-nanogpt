@@ -208,6 +208,8 @@ import numpy as np
 def load_tokens(filename):
     npt = np.load(filename)
     npt = npt.astype(np.int32) # added after video
+    rng = np.random.default_rng()
+    rng.permutation(npt, axis=1)
     ptt = torch.tensor(npt, dtype=torch.long)
     return ptt
 
